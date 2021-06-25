@@ -5,3 +5,135 @@
   margin: 0;
   padding: 0;
 }
+body {
+  font-size: 20px !important;
+  color: #444444 !important;
+  line-height: 1.8 !important;
+  background: #fff;
+  overflow-wrap: break-word;
+}
+body p{
+  margin-bottom: 0;
+}
+body h2 {
+  font-size: 48px;
+  line-height: 1.3;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #333333;
+  font-weight: 700 !important;
+  letter-spacing: -1px;
+}
+
+.spacing {
+  box-sizing: border-box;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+}
+
+.contain {
+  width: 1280px;
+  max-width: 95%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.heading h2 {
+  font-size: 64px;
+}
+
+.image img{
+  width: 100%;
+}
+.gap-spacing{
+  height: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+  .contain {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .contain {
+    width: 90% !important;
+    padding: 0;
+  }
+}
+/* section one */
+.hero-section-bgOne {
+  background-image: url("../assets/img/bg1.png");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain;
+}
+.hero-section-one-description .main {
+  font-size: 64px;
+  color: #000000;
+}
+.hero-section-one-description .gap {
+  height: 50px;
+}
+.hero-section-one-img {
+  height: 510px;
+  background-image: url("../assets/img/imgOne.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 10px;
+}
+/* .hero-section-one-img img {
+  max-height: 100%;
+} */
+
+/* Services */
+.services {
+  margin: 80px 0;
+}
+
+.bulletPoint {
+  font-size: 16px;
+  font-weight: 500 !important;
+  margin: 0 0 10px;
+  display: list-item;
+  width: 100%;
+  list-style: none !important;
+}
+.bulletPoint .description {
+  display: table-cell;
+  vertical-align: middle;
+  text-decoration: inherit;
+}
+.bulletPoint .icon{
+  display: table-cell;
+}
+.fa-angle-right {
+  width: 2em;
+  height: 2em;
+  border-radius: 50px;
+  padding: 1px 0px 0px 1px;
+  margin-right: 10px;
+  color: #000000;
+  font-size: 14px !important;
+  box-shadow: 4px -7px 11px rgb(0 0 0 / 28%) inset;
+  background-color: #ffffff;
+  line-height: 2em !important;
+  text-align: center;
+  display: block !important;
+}
+
+/* About */
+.about{
+  margin: 80px 0;
+}
+.about .description {
+  font-size: 18px;
+}
