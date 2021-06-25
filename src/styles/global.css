@@ -162,7 +162,7 @@ h6 {
 .navigationBox .pagename {
   flex: 1;
 }
-.navigationBox .pagename h3 {
+.navigationBox .pagename h4 {
   font-size: 28px;
   color: #000000;
   font-weight: 400 !important;
@@ -236,6 +236,15 @@ h6 {
   color: #000000 !important;
   border-bottom: solid #333333 !important;
 }
+
+@media screen and (max-width: 480px) {
+  .footer .list-menu li a {
+    font-size: 16px;
+    line-height: 2.8;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
 .footer .sec-3 .media {
   text-align: center;
   display: table;
@@ -266,6 +275,14 @@ h6 {
 .footer .sec-3 .media a:hover i {
   transform: rotateY(360deg);
 }
+@media screen and (max-width: 480px) {
+  .footer .sec-3 .media a {
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+}
 .footer .footer-2 {
   background-color: #f1f1f1;
 }
@@ -274,4 +291,53 @@ h6 {
   color: rgba(0, 0, 0, 0.4);
   padding-top: 20px;
   padding-bottom: 50px;
+}
+
+/* header */
+.header {
+  margin-bottom: 5px;
+}
+.header .desktopbar {
+  display: flex;
+}
+.header .logo {
+  flex-grow: 1;
+}
+.header .logo img {
+  width: 160px;
+}
+.header .desktopbar .menu {
+  margin-top: 35px;
+  margin-right: 20px;
+  margin-bottom: 18px;
+}
+.header .desktopbar .menu .list {
+  list-style: none !important;
+  display: flex;
+}
+.header .desktopbar .menu .list li a {
+  font-size: 17px;
+  color: #999999;
+  font-weight: 600;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  padding: 6px 0px;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-decoration: none;
+}
+.header .desktopbar .menu .list a:before {
+  display: block;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-color: #154a40;
+  width: 12px;
+  height: 12px;
+  top: -45px;
+  left: calc(50% - 6px);
+  transform: rotate(45deg);
+}
+.active-desktopbar{
+  color: #000000 !important;
 }

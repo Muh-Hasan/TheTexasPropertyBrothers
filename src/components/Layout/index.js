@@ -6,7 +6,10 @@ import Footer from "../Footer"
 const Layout = ({ children, location }) => {
   return (
     <div>
-      <NavigationBox currentRoute={location.pathname} />
+      <Header />
+      {location.pathname !== "/" ? (
+        <NavigationBox currentRoute={location.pathname} />
+      ) : null}
       <div>{children}</div>
       <Footer location={location} />
     </div>
