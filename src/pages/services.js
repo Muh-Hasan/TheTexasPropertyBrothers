@@ -1,7 +1,7 @@
 import React from "react"
 import BulletPoint from "../components/BulletPoint"
 import Layout from "../components/Layout"
-import ImgThree from "../assets/img/ImgThree.jpg"
+import ImgThree from "../assets/img/imgThree.jpg"
 
 const Services = props => {
   return (
