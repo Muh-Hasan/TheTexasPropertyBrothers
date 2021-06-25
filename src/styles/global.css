@@ -12,7 +12,7 @@ body {
   background: #fff;
   overflow-wrap: break-word;
 }
-body p{
+body p {
   margin-bottom: 0;
 }
 body h2 {
@@ -49,10 +49,10 @@ h6 {
   font-size: 64px;
 }
 
-.image img{
+.image img {
   width: 100%;
 }
-.gap-spacing{
+.gap-spacing {
   height: 30px;
 }
 
@@ -112,7 +112,7 @@ h6 {
   vertical-align: middle;
   text-decoration: inherit;
 }
-.bulletPoint .icon{
+.bulletPoint .icon {
   display: table-cell;
 }
 .fa-angle-right {
@@ -131,9 +131,17 @@ h6 {
 }
 
 /* About */
-.about{
+.about {
   margin: 80px 0;
 }
 .about .description {
   font-size: 18px;
+}
+
+/* properties */
+.properties {
+  margin: 80px 0;
+}
+.properties .property-img img {
+  margin: 5px 0;
 }
