@@ -49,7 +49,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/blog" activeClassName="active-desktopbar">
+              <Link to="/blogs" activeClassName="active-desktopbar">
                 Blog
               </Link>
             </li>

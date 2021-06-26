@@ -359,5 +359,47 @@ h6 {
 }
 .blogDisplay .blogPost-date p {
   font-size: 0.7em;
-  /* color: #fff; */
+  color: #444444 !important;
+}
+.blogDisplay-blogPost a {
+  text-decoration: none !important;
+}
+.blog-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  word-wrap: break-word;
+  margin-top: 60px;
+}
+.blog-margin {
+  margin: 0 64px;
+}
+@media screen and (min-width: 728px) and (max-width: 903.98px) {
+  .blog-margin {
+    margin: 0 48px;
+  }
+}
+@media screen and (max-width: 727.98px) {
+  .blog-margin {
+    margin: 0 24px;
+  }
+}
+.blog-description p {
+  line-height: 40px;
+  margin-top: 1.86em;
+  font-size: 21px;
+  margin-bottom: 1.46em;
+  font-weight: 400;
+}
+.blog-date {
+  color: rgba(117, 117, 117, 1);
+  line-height: 20px;
+  font-size: 16px;
+  margin-bottom: 56px;
+}
+.blog-title {
+  line-height: 60px;
+  font-size: 48px;
+  letter-spacing: -0.011em;
+  margin-bottom: 0.27em;
 }

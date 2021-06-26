@@ -32,7 +32,7 @@ const Footer = ({ location }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/blog" activeClassName="activeLink-footer">
+                <Link to="/blogs" activeClassName="activeLink-footer">
                   Blog
                 </Link>
               </li>

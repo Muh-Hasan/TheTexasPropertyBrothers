@@ -1,12 +1,9 @@
 import React from "react"
 
 import { makeStyles } from "@material-ui/core/styles"
-import Typography from "@material-ui/core/Typography"
 import Breadcrumbs from "@material-ui/core/Breadcrumbs"
 import Link from "@material-ui/core/Link"
 import HomeIcon from "@material-ui/icons/Home"
-import WhatshotIcon from "@material-ui/icons/Whatshot"
-import GrainIcon from "@material-ui/icons/Grain"
 
 const useStyles = makeStyles(theme => ({
   link: {
@@ -27,14 +24,21 @@ const getPage = name => {
       return "Properties"
     case "services":
       return "Services"
-    case "blog":
-      return "Blog"
+    case "blogs":
+      return "Blogs"
   }
 }
 
-const NavigationBox = ({ routeTwo, currentRoute }) => {
+const NavigationBox = ({ currentRoute }) => {
   const classes = useStyles()
-  let pageName = getPage(currentRoute.split("/"))
+  let blogName = currentRoute.includes("blogs")
+    ? decodeURI(currentRoute).split("/")
+    : undefined
+
+  let pageName = currentRoute.includes("blogs")
+    ? getPage(blogName)
+    : getPage(currentRoute.split("/"))
+
   return (
     <div className="navigationBox">
       <div className="contain d-flex align-items-center">
@@ -42,12 +46,24 @@ const NavigationBox = ({ routeTwo, currentRoute }) => {
           <h1>{pageName}</h1>
         </div>
         <div className="breadcrumbs">
-          <Breadcrumbs aria-label="breadcrumb" separator="›">
-            <Link color="textPrimary" href="/" className={classes.link}>
-              <HomeIcon className={classes.icon} />
-            </Link>
-            <p color="inherit">{pageName}</p>
-          </Breadcrumbs>
+          {currentRoute.includes("blogs") && blogName !== undefined ? (
+            <Breadcrumbs aria-label="breadcrumb" separator="›">
+              <Link color="textPrimary" href="/" className={classes.link}>
+                <HomeIcon className={classes.icon} />
+              </Link>
+              <Link color="textPrimary" href="/blogs" className={classes.link}>
+                {pageName}
+              </Link>
+              <p color="inherit">{blogName[2]}</p>
+            </Breadcrumbs>
+          ) : (
+            <Breadcrumbs aria-label="breadcrumb" separator="›">
+              <Link color="textPrimary" href="/" className={classes.link}>
+                <HomeIcon className={classes.icon} />
+              </Link>
+              <p color="inherit">{pageName}</p>
+            </Breadcrumbs>
+          )}
         </div>
       </div>
     </div>

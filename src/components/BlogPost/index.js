@@ -3,8 +3,8 @@ import { Link } from "gatsby"
 
 const BlogPost = ({ img, alt, title, date }) => {
   return (
-    <Link to={`/blogs/${title}`}>
-      <div className="col-sm-12 col-md-6 col-lg-4 blogDisplay-blogPost">
+    <div className="col-sm-12 col-md-6 col-lg-4 blogDisplay-blogPost">
+      <Link to={`/blogs/${title}`}>
         <div className="image blogPost-img">
           <img src={img} alt={alt} />
         </div>
@@ -18,8 +18,8 @@ const BlogPost = ({ img, alt, title, date }) => {
             </p>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 }
 
