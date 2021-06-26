@@ -24,9 +24,11 @@ const getPage = name => {
     case "about-us":
       return "About Us"
     case "properties":
-        return "Properties"
+      return "Properties"
     case "services":
-        return "Services"
+      return "Services"
+    case "blog":
+      return "Blog"
   }
 }
 
