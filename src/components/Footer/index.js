@@ -1,8 +1,19 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Logo from "../../assets/img/logo.png"
 
-const Footer = ({ location }) => {
+const Footer = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allStrapiFooterLinks {
+        nodes {
+          name
+          uri
+        }
+      }
+    }
+  `)
+  const { allStrapiFooterLinks } = data
   return (
     <div className="footer">
       <div className="footer-1">
@@ -16,36 +27,13 @@ const Footer = ({ location }) => {
         <div className="sec-2 footer-spacing">
           <div>
             <ul className="list-menu">
-              <li>
-                <Link to="/" activeClassName="activeLink-footer">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/properties" activeClassName="activeLink-footer">
-                  Properties
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" activeClassName="activeLink-footer">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/blogs" activeClassName="activeLink-footer">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link to="/about-us" activeClassName="activeLink-footer">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact-us" activeClassName="activeLink-footer">
-                  Contant Us
-                </Link>
-              </li>
+              {allStrapiFooterLinks?.nodes.map((v, i) => (
+                <li key={i}>
+                  <Link to={v.uri} activeClassName="activeLink-footer">
+                    {v.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -69,7 +57,7 @@ const Footer = ({ location }) => {
         </div>
       </div>
       <div className="footer-2 ">
-        <div className='text text-center'>
+        <div className="text text-center">
           <p>Copyright 2021 - All Rights Reserved.</p>
         </div>
       </div>

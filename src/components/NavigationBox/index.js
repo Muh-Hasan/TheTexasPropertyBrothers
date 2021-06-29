@@ -26,6 +26,8 @@ const getPage = name => {
       return "Services"
     case "blogs":
       return "Blogs"
+    case "contact-us":
+      return "Contact Us"
   }
 }
 

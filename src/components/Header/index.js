@@ -1,14 +1,16 @@
 import React from "react"
 import { Link } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
-// import AppBar from "@material-ui/core/AppBar"
-// import Toolbar from "@material-ui/core/Toolbar"
-// import Typography from "@material-ui/core/Typography"
-// import Button from "@material-ui/core/Button"
-// import IconButton from "@material-ui/core/IconButton"
-// import MenuIcon from "@material-ui/icons/Menu"
+import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
+import Typography from "@material-ui/core/Typography"
+import Button from "@material-ui/core/Button"
+import IconButton from "@material-ui/core/IconButton"
+import MenuIcon from "@material-ui/icons/Menu"
+import Slide from "@material-ui/core/Slide"
 
 import Logo from "../../assets/img/logo.png"
+import useScrollTrigger from "@material-ui/core/useScrollTrigger"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,51 +24,66 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Header = () => {
-  const classes = useStyles()
+function ElevationScroll(props) {
+  const { children, window } = props
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined,
+  })
 
+  return React.cloneElement(children, {
+    elevation: trigger ? 4 : 0,
+  })
+}
+
+function HideOnScroll(props) {
+  const { children, window } = props
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined,
+  })
+  return React.cloneElement(
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>,
+    {
+      elevation: trigger ? 4 : 0,
+    }
+  )
+  // return (
+  //   <Slide appear={false} direction="down" in={!trigger}>
+  //     {children}
+  //   </Slide>
+  // )
+}
+
+const Header = props => {
+  const classes = useStyles()
   return (
-    <div className="header">
-      <div className="desktopbar contain">
-        <div className="logo">
-          <img src={Logo} alt="logo" />
-        </div>
-        <div className="menu">
-          <ul className="list">
-            <li>
-              <Link to="/" activeClassName="active-desktopbar">
-                <span>Home</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/properties" activeClassName="active-desktopbar">
-                Properties
-              </Link>
-            </li>
-            <li>
-              <Link to="/services" activeClassName="active-desktopbar">
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link to="/blogs" activeClassName="active-desktopbar">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link to="/about-us" activeClassName="active-desktopbar">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact-us" activeClassName="active-desktopbar">
-                Contant Us
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <AppBar position="fixed">
+      <Toolbar>
+        <IconButton
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="menu"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" className={classes.title}>
+          News
+        </Typography>
+        <Button color="inherit">Login</Button>
+      </Toolbar>
+    </AppBar>
   )
 }
 

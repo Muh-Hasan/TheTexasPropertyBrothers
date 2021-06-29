@@ -7,9 +7,11 @@ const Layout = ({ children, location }) => {
   return (
     <div>
       <Header />
-      {location.pathname !== "/" ? (
-        <NavigationBox currentRoute={location.pathname} />
-      ) : null}
+      <div className='navigation-div'>
+        {location.pathname !== "/" ? (
+          <NavigationBox currentRoute={location.pathname} />
+        ) : null}
+      </div>
       <div>{children}</div>
       <Footer location={location} />
     </div>
