@@ -1,11 +1,13 @@
 import React from "react"
+import { graphql } from "gatsby"
 import GalleryImage from "../components/GalleryImage"
 import Layout from "../components/Layout"
 import ImgTwo from "../assets/img/imgTwo.jpeg"
 
-const properties = props => {
+const properties = ({ location, data }) => {
+  const { allStrapiPropertiesImage } = data
   return (
-    <Layout location={props.location}>
+    <Layout location={location}>
       <div className="container properties">
         <div className="heading text-center">
           <h2>Gallery</h2>
@@ -13,12 +15,9 @@ const properties = props => {
         <div className="gap-spacing"></div>
 
         <div className="row align-items-center justify-content-between">
-          <GalleryImage img={ImgTwo} alt="some" />
-          <GalleryImage img={ImgTwo} alt="some" />
-          <GalleryImage img={ImgTwo} alt="some" />
-          <GalleryImage img={ImgTwo} alt="some" />
-          <GalleryImage img={ImgTwo} alt="some" />
-          <GalleryImage img={ImgTwo} alt="some" />
+          {allStrapiPropertiesImage.nodes[0].image.map((v, i) => (
+            <GalleryImage img={`http://localhost:1337${v.url}`} alt={v.name} key={i}/>
+          ))}
         </div>
       </div>
     </Layout>
@@ -26,3 +25,16 @@ const properties = props => {
 }
 
 export default properties
+
+export const data = graphql`
+  query {
+    allStrapiPropertiesImage {
+      nodes {
+        image {
+          name
+          url
+        }
+      }
+    }
+  }
+`
