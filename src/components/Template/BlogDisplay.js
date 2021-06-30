@@ -2,9 +2,8 @@ import React from "react"
 import Layout from "../Layout"
 
 const BlogDisplay = ({ location, pageContext: { data } }) => {
-    console.log(location);
   return (
-    <Layout location={location}>
+    <Layout location={location} title={data.title}>
       <div className="blog-container">
         <div className="blog-margin">
           <div className="blog-title">

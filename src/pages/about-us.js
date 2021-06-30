@@ -5,7 +5,7 @@ import Layout from "../components/Layout"
 const About = ({ location, data }) => {
   const { allStrapiAboutUs } = data
   return (
-    <Layout location={location}>
+    <Layout location={location} title="About Us">
       <div className="container about">
         <div className="row align-items-center justify-content-between">
           <div className="col-sm-12 col-md-6 col-lg-6">

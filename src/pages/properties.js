@@ -1,13 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
-import GalleryImage from "../components/GalleryImage"
 import Layout from "../components/Layout"
-import ImgTwo from "../assets/img/imgTwo.jpeg"
+import GalleryImage from "../components/GalleryImage"
 
 const properties = ({ location, data }) => {
   const { allStrapiPropertiesImage } = data
   return (
-    <Layout location={location}>
+    <Layout location={location} title="Properties">
       <div className="container properties">
         <div className="heading text-center">
           <h2>Gallery</h2>

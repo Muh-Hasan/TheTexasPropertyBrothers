@@ -6,7 +6,7 @@ import BlogPost from "../components/BlogPost"
 const Blog = ({ location, data }) => {
   const { allStrapiBlogs } = data
   return (
-    <Layout location={location}>
+    <Layout location={location} title="Blogs">
       <div className='container blogDisplay'>
         <div className="row align-items-center justify-content-between">
           {allStrapiBlogs.nodes.map((v, i) => (

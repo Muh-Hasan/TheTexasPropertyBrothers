@@ -9,7 +9,7 @@ import Phone from "../assets/img/phone.png"
 const Contact = ({ location, data }) => {
   const { allStrapiContactUs } = data
   return (
-    <Layout location={location}>
+    <Layout location={location} title="Contact Us">
       <div className="container contact">
         <div className="gap-contact"></div>
         <div className="contact-heading">
