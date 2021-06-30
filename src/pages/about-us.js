@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import ImgFour from "../assets/img/imgFour.jpg"
 import Layout from "../components/Layout"
 
 const About = ({ location, data }) => {
