@@ -1,19 +1,27 @@
 import React from "react"
+import Fab from "@material-ui/core/Fab"
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
+import ScrollTop from "./ScrollTop"
 import Header from "../Header"
 import NavigationBox from "../NavigationBox"
 import Footer from "../Footer"
 
-const Layout = ({ children, location }) => {
+const Layout = props => {
   return (
     <div>
       <Header />
-      <div className='navigation-div'>
-        {location.pathname !== "/" ? (
-          <NavigationBox currentRoute={location.pathname} />
+      <div className="navigation-div" id="back-to-top-anchor">
+        {props.location.pathname !== "/" ? (
+          <NavigationBox currentRoute={props.location.pathname} />
         ) : null}
       </div>
-      <div>{children}</div>
-      <Footer location={location} />
+      <div>{props.children}</div>
+      <ScrollTop {...props}>
+        <Fab color="secondary" size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
+      <Footer location={props.location} />
     </div>
   )
 }

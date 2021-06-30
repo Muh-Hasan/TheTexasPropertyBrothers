@@ -162,9 +162,10 @@ h6 {
 /* navigationBox */
 
 .navigation-div {
-  padding-top: 65px;
+  padding-top: 110px;
 }
 .navigationBox {
+  padding-top: 65px;
   background-position: center top;
   background-size: cover;
   background-image: linear-gradient(
@@ -312,15 +313,24 @@ h6 {
 
 /* header */
 
-/* .header .desktopbar {
-  display: flex;
-}
 .header .logo {
   flex-grow: 1;
 }
+
 .header .logo img {
   width: 160px;
 }
+.MuiAppBar-colorPrimary {
+  background-color: white !important;
+}
+.MuiPaper-elevation4 {
+  box-shadow: 0px 5px 27px 0px rgba(0, 0, 0, 0.08) !important;
+}
+.MuiFab-secondary{
+  background-color: #154a40 !important;
+}
+
+
 .header .desktopbar .menu {
   margin-top: 35px;
   margin-right: 20px;
@@ -339,7 +349,7 @@ h6 {
 }
 .active-desktopbar {
   color: #000000 !important;
-} */
+}
 
 /* Blog */
 .blogDisplay {
