@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif !important;
   margin: 0;
   padding: 0;
 }
@@ -102,9 +102,6 @@ h6 {
   background-size: cover;
   border-radius: 10px;
 }
-/* .hero-section-one-img img {
-  max-height: 100%;
-} */
 
 /* Services */
 .services {
@@ -127,7 +124,7 @@ h6 {
 .bulletPoint .icon {
   display: table-cell;
 }
-.fa-angle-right {
+.bulletPoint .icon div{
   width: 2em;
   height: 2em;
   border-radius: 50px;
@@ -312,11 +309,18 @@ h6 {
 }
 
 /* header */
-
+.header .MuiSvgIcon-root{
+  fill: #000000 !important;
+  height: 2rem !important;
+  width: 2rem !important;
+}
+.makeStyles-list-1 a {
+  text-decoration: none !important;
+  color: #000000 !important;
+}
 .header .logo {
   flex-grow: 1;
 }
-
 .header .logo img {
   width: 160px;
 }
@@ -326,17 +330,18 @@ h6 {
 .MuiPaper-elevation4 {
   box-shadow: 0px 5px 27px 0px rgba(0, 0, 0, 0.08) !important;
 }
-.MuiFab-secondary{
+.MuiFab-secondary {
   background-color: #154a40 !important;
 }
-
-
-.header .desktopbar .menu {
+.header .desktop-header {
+  padding-bottom: 2px;
+}
+.header .desktop-header .menu-item {
   margin-top: 35px;
   margin-right: 20px;
   margin-bottom: 18px;
 }
-.header .desktopbar .menu .list li a {
+.header .desktop-header .menu-item a {
   font-size: 17px;
   color: #999999;
   font-weight: 600;
@@ -347,6 +352,8 @@ h6 {
   margin-left: 20px;
   text-decoration: none;
 }
+
+.header .desktop-header .menu-item a:hover,
 .active-desktopbar {
   color: #000000 !important;
 }

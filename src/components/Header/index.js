@@ -1,30 +1,30 @@
 import React from "react"
-import { Link } from "gatsby"
-import { makeStyles } from "@material-ui/core/styles"
+import clsx from "clsx"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
-import Button from "@material-ui/core/Button"
+import MenuItem from "./MenuItem"
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
+import List from "@material-ui/core/List"
+import Divider from "@material-ui/core/Divider"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemText from "@material-ui/core/ListItemText"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
-import Slide from "@material-ui/core/Slide"
-import Logo from "../../assets/img/logo.png"
 import useScrollTrigger from "@material-ui/core/useScrollTrigger"
-import Fab from "@material-ui/core/Fab"
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
-import Zoom from "@material-ui/core/Zoom"
+import { useBreakpoint } from "gatsby-plugin-breakpoints"
+import { makeStyles } from "@material-ui/core/styles"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
+import Logo from "../../assets/img/logo.png"
+
+const useStyles = makeStyles({
+  list: {
+    width: 250,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  fullList: {
+    width: "auto",
   },
-  title: {
-    flexGrow: 1,
-  },
-}))
+})
 
 function ElevationScroll(props) {
   const { children, window } = props
@@ -39,21 +39,97 @@ function ElevationScroll(props) {
   })
 }
 
-
 const Header = props => {
   const classes = useStyles()
+  const isSize = useBreakpoint()
+  const data = useStaticQuery(graphql`
+    query {
+      allStrapiFooterLinks {
+        nodes {
+          name
+          uri
+        }
+      }
+    }
+  `)
+  const { allStrapiFooterLinks } = data
+
+  const [state, setState] = React.useState({ right: false })
+
+  const toggleDrawer = (anchor, open) => event => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return
+    }
+
+    setState({ ...state, [anchor]: open })
+  }
+  const list = anchor => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === "top" || anchor === "bottom",
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        {allStrapiFooterLinks.nodes.map((v, index) => (
+          <>
+            <ListItem button key={index}>
+              <Link to={v.uri}>
+                <ListItemText primary={v.name} />
+              </Link>
+            </ListItem>
+            <Divider />
+          </>
+        ))}
+      </List>
+      <Divider />
+    </div>
+  )
+
   return (
     <div className="header">
       <ElevationScroll {...props}>
-        <AppBar position="fixed">
+        <AppBar position="fixed" className="desktop-header">
           <Toolbar>
             <div className="logo">
               <img src={Logo} alt="logo" />
             </div>
-
-            <Typography variant="h6" className={classes.title}>
-              News
-            </Typography>
+            {isSize.lg ? (
+              <div>
+                {["right"].map(anchor => (
+                  <React.Fragment key={anchor}>
+                    <IconButton
+                      edge="start"
+                      color="black"
+                      aria-label="menu"
+                      onClick={toggleDrawer(anchor, true)}
+                    >
+                      <MenuIcon />
+                    </IconButton>
+                    <SwipeableDrawer
+                      anchor={anchor}
+                      open={state[anchor]}
+                      onClose={toggleDrawer(anchor, false)}
+                      onOpen={toggleDrawer(anchor, true)}
+                    >
+                      {list(anchor)}
+                    </SwipeableDrawer>
+                  </React.Fragment>
+                ))}
+              </div>
+            ) : (
+              <>
+                {allStrapiFooterLinks?.nodes.map((v, i) => (
+                  <MenuItem name={v.name} uri={v.uri} key={i} />
+                ))}
+              </>
+            )}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
@@ -62,12 +138,3 @@ const Header = props => {
 }
 
 export default Header
-
-// <IconButton
-// edge="start"
-// className={classes.menuButton}
-// color="inherit"
-// aria-label="menu"
-// >
-// <MenuIcon />
-// </IconButton>

@@ -2,11 +2,11 @@ import React from "react"
 
 const BulletPoint = ({ description }) => {
   return (
-    <li className='bulletPoint'>
-      <div className='icon'>
-        <i className="fa fa-angle-right mr10"></i>{" "}
+    <li className="bulletPoint">
+      <div className="icon">
+        <div>{">"}</div>
       </div>
-      <div className='description'>{description}</div>
+      <div className="description">{description}</div>
     </li>
   )
 }
