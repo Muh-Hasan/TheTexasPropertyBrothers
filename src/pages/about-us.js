@@ -1,9 +1,12 @@
 import React from "react"
+import { graphql } from "gatsby"
 import ImgFour from "../assets/img/imgFour.jpg"
 import Layout from "../components/Layout"
-const About = props => {
+
+const About = ({ location, data }) => {
+  const { allStrapiAboutUs } = data
   return (
-    <Layout location={props.location}>
+    <Layout location={location}>
       <div className="container about">
         <div className="row align-items-center justify-content-between">
           <div className="col-sm-12 col-md-6 col-lg-6">
@@ -13,18 +16,15 @@ const About = props => {
             <div className="gap-spacing"></div>
             <div>
               <p className="description">
-                <span>
-                  We are a real estate corporate housing company that started in
-                  2019 and slowly built up properties in the popular San Antonio
-                  and Austin area. The owners are from Texas and love to provide
-                  businesses all over with the most flexible options to host
-                  their traveling employees or contractors.
-                </span>
+                <span>{allStrapiAboutUs.nodes[0].description}</span>
               </p>
             </div>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6 image">
-            <img src={ImgFour} alt="ImgFour" />
+            <img
+              src={`http://localhost:1337${allStrapiAboutUs.nodes[0].img.url}`}
+              alt={allStrapiAboutUs.nodes[0].img.name}
+            />
           </div>
         </div>
       </div>
@@ -33,3 +33,17 @@ const About = props => {
 }
 
 export default About
+
+export const query = graphql`
+  query {
+    allStrapiAboutUs {
+      nodes {
+        description
+        img {
+          name
+          url
+        }
+      }
+    }
+  }
+`

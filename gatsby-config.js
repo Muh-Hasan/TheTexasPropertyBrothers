@@ -15,8 +15,19 @@ module.exports = {
       options: {
         apiURL: `http://localhost:1337`,
         queryLimit: 1000, // Defaults to 100
-        collectionTypes: [`blogs` , `footer-links`],
-        // singleTypes: [`home-page`, `contact`],
+        collectionTypes: [`blogs`, `footer-links`, `services-bullet-points`],
+        singleTypes: [
+          `social-media-links`,
+          `services-image`,
+          `properties-image`,
+          `home-section-two`,
+          `home-section-one`,
+          `home-section-three`,
+          `home-section-four`,
+          `home-contact-box`,
+          `contact-us`,
+          `about-us`,
+        ],
       },
     },
     {
