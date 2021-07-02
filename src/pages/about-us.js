@@ -21,7 +21,7 @@ const About = ({ location, data }) => {
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6 image">
             <img
-              src={`http://localhost:1337${allStrapiAboutUs.nodes[0].img.url}`}
+              src={`https://texas-property-brothers.herokuapp.com${allStrapiAboutUs.nodes[0].img.url}`}
               alt={allStrapiAboutUs.nodes[0].img.name}
             />
           </div>

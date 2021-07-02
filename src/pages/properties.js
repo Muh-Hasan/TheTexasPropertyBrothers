@@ -15,7 +15,7 @@ const properties = ({ location, data }) => {
 
         <div className="row align-items-center justify-content-between">
           {allStrapiPropertiesImage.nodes[0].image.map((v, i) => (
-            <GalleryImage img={`http://localhost:1337${v.url}`} alt={v.name} key={i}/>
+            <GalleryImage img={`https://texas-property-brothers.herokuapp.com${v.url}`} alt={v.name} key={i}/>
           ))}
         </div>
       </div>

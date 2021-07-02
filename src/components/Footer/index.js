@@ -1,6 +1,10 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Logo from "../../assets/img/logo.png"
+import Facebook from '../../assets/img/facebook.png'
+import Twitter from '../../assets/img/twitter.png'
+import Instagram from '../../assets/img/instagram.png'
+import Linkedin from '../../assets/img/linkedin.png'
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -41,7 +45,7 @@ const Footer = () => {
           <div className="text-center">
             <div className="media">
               <a>
-                <i className="fa fa-facebook-f"></i>
+                <img src={Facebook} />
               </a>
               <a>
                 <i className="fa fa-twitter"></i>

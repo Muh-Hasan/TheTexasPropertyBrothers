@@ -13,8 +13,8 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337`,
-        queryLimit: 1000, // Defaults to 100
+        apiURL: `https://texas-property-brothers.herokuapp.com`,
+        queryLimit: 1000,
         collectionTypes: [`blogs`, `footer-links`, `services-bullet-points`],
         singleTypes: [
           `social-media-links`,

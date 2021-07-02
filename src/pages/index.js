@@ -13,7 +13,7 @@ export default function Home({ location, data }) {
     allStrapiHomeSectionFour,
     allStrapiHomeContactBox,
   } = data
-  const uri = "http://localhost:1337"
+  const uri = "https://texas-property-brothers.herokuapp.com"
 
   return (
     <Layout location={location} title="Home">
@@ -62,7 +62,7 @@ export default function Home({ location, data }) {
                 </div>
                 <div className="gap-spacing"></div>
                 <div>
-                  <p>{allStrapiHomeSectionTwo.nodes[0].image.description}</p>
+                  <p>{allStrapiHomeSectionTwo.nodes[0].description}</p>
                 </div>
               </div>
             </div>

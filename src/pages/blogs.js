@@ -12,7 +12,7 @@ const Blog = ({ location, data }) => {
           {allStrapiBlogs.nodes.map((v, i) => (
             <BlogPost
               title={v.title}
-              img={`http://localhost:1337${v.blogImage.url}`}
+              img={`https://texas-property-brothers.herokuapp.com${v.blogImage.url}`}
               date={v.date}
               alt={v.blogImage.name}
             />

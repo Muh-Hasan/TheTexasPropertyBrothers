@@ -1,13 +1,57 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import ContactInfo from "../components/ContactInfo"
 import Envelope from "../assets/img/envelope.png"
 import Mark from "../assets/img/marker.png"
 import Phone from "../assets/img/phone.png"
+const mailchimpClient = require("@mailchimp/mailchimp_transactional")(
+  "Jlkfx2f9dE2IMd_DwmkhXg"
+)
+const mailchimp = require("@mailchimp/mailchimp_marketing")
+mailchimp.setConfig({
+  apiKey: "a96e71424bc05894eaf627a63942cb99-us6",
+})
 
 const Contact = ({ location, data }) => {
   const { allStrapiContactUs } = data
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
+  const [message, setMessage] = useState("")
+
+  const handleSubmit = async () => {
+    const responseOne = await mailchimpClient.messages.send({
+      message: {
+        from_email: "support@thetexaspropertybrothers.com",
+        subject: "texas-property-brothers ( Website )",
+        text: `Email: ${email}
+               Phone: ${phone}
+               message: ${message}
+        `,
+        to: [
+          {
+            email: "support@thetexaspropertybrothers.com",
+            type: "to",
+          },
+        ],
+      },
+    })
+    const responseTwo = await mailchimp.lists.addListMember("83567a0774", {
+      email_address: email,
+      status: "subscribed",
+      merge_fields: {
+        PHONE: phone
+      }
+    });
+  
+    console.log(
+      `Successfully added contact as an audience member. The contact's id is ${
+        responseTwo.id
+      }.`
+    );
+    console.log(responseOne)
+  }
+
   return (
     <Layout location={location} title="Contact Us">
       <div className="container contact">
@@ -45,18 +89,26 @@ const Contact = ({ location, data }) => {
             <div>
               <div className="d-flex flex-column">
                 <label>Your phone</label>
-                <input required />
+                <input
+                  required
+                  onChange={e => setPhone(e.currentTarget.value)}
+                />
               </div>
               <div className="d-flex flex-column">
                 <label>Your email</label>
-                <input required />
+                <input
+                  required
+                  onChange={e => setEmail(e.currentTarget.value)}
+                />
               </div>
               <div>
                 <label>Your message (optional)</label>
-                <textarea />
+                <textarea onChange={e => setMessage(e.currentTarget.value)} />
               </div>
               <div>
-                <button className="submit-contact">Submit</button>
+                <button className="submit-contact" onClick={handleSubmit}>
+                  Submit
+                </button>
               </div>
             </div>
           </div>
