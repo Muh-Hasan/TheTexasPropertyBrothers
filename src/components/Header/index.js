@@ -79,11 +79,11 @@ const Header = props => {
       <List>
         {allStrapiFooterLinks.nodes.map((v, index) => (
           <>
-            <ListItem button key={index}>
-              <Link to={v.uri}>
+            <Link to={v.uri}>
+              <ListItem button key={index}>
                 <ListItemText primary={v.name} />
-              </Link>
-            </ListItem>
+              </ListItem>
+            </Link>
             <Divider />
           </>
         ))}
