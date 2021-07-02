@@ -1,9 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
-import ImgOne from "../assets/img/imgOne.jpg"
-import ImgFive from "../assets/img/ImgFive.jpg"
-import ImgSeven from "../assets/img/ImgSeven.png"
 
 export default function Home({ location, data }) {
   const {
