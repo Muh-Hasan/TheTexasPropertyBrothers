@@ -9,8 +9,10 @@ const mailchimpClient = require("@mailchimp/mailchimp_transactional")(
   "Jlkfx2f9dE2IMd_DwmkhXg"
 )
 const mailchimp = require("@mailchimp/mailchimp_marketing")
+
 mailchimp.setConfig({
   apiKey: "a96e71424bc05894eaf627a63942cb99-us6",
+  server: "us6",
 })
 
 const Contact = ({ location, data }) => {
@@ -36,20 +38,22 @@ const Contact = ({ location, data }) => {
         ],
       },
     })
-    const responseTwo = await mailchimp.lists.addListMember("83567a0774", {
-      email_address: email,
-      status: "subscribed",
-      merge_fields: {
-        PHONE: phone
-      }
-    });
-  
-    console.log(
-      `Successfully added contact as an audience member. The contact's id is ${
-        responseTwo.id
-      }.`
-    );
-    console.log(responseOne)
+    // const responseTwo = await mailchimp.lists.addListMember("83567a0774", {
+    //   members: [
+    //     {
+    //       email_address: email,
+    //       status: "subscribed",
+    //       merge_fields: {
+    //         PHONE: phone,
+    //       },
+    //     },
+    //   ],
+    // })
+
+    // console.log(
+    //   `Successfully added contact as an audience member. The contact's id is ${responseTwo.id}.`
+    // )
+    // console.log(responseOne)
   }
 
   return (
