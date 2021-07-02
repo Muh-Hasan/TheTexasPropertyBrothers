@@ -97,9 +97,11 @@ const Header = props => {
       <ElevationScroll {...props}>
         <AppBar position="fixed" className="desktop-header">
           <Toolbar>
-            <div className="logo">
-              <img src={Logo} alt="logo" />
-            </div>
+            <Link to="/">
+              <div className="logo">
+                <img src={Logo} alt="logo" />
+              </div>
+            </Link>
             {isSize.lg ? (
               <div>
                 {["right"].map(anchor => (
