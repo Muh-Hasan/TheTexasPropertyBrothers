@@ -337,7 +337,6 @@ h6 {
   margin-right: auto;
 }
 .footer .sec-3 .media a {
-  font-size: 24px;
   color: #333333;
   background-color: #ffffff;
   padding: 12px;
@@ -349,23 +348,24 @@ h6 {
   display: inline-block;
   width: 3em;
   height: 3em;
+  cursor: pointer;
 }
-.footer .sec-3 .media a i {
+.footer .sec-3 .media a img {
   transition: all 0.4s ease;
+  width: 24px;
 }
-.footer .sec-3 .media a:hover {
-  color: #ffffff;
-  background-color: #333333;
-}
-.footer .sec-3 .media a:hover i {
+.footer .sec-3 .media a:hover img {
   transform: rotateY(360deg);
 }
 @media screen and (max-width: 480px) {
   .footer .sec-3 .media a {
-    font-size: 20px;
+    /* font-size: 20px; */
     padding: 10px;
     margin-right: 8px;
     margin-left: 8px;
+  }
+  .footer .sec-3 .media a img {
+    width: 20px;
   }
 }
 .footer .footer-2 {
@@ -567,4 +567,9 @@ h6 {
   height: 160px;
   line-height: 2;
   overflow: auto;
+}
+
+.MuiListItem-button a {
+  text-decoration: none !important;
+  color: #000000 !important;
 }
