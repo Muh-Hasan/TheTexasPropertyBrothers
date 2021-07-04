@@ -9,23 +9,23 @@ import Linkedin from "../../assets/img/linkedin.png"
 const Footer = () => {
   const data = useStaticQuery(graphql`
     query {
-      allStrapiFooterLinks {
+      allContentfulMenuItem {
         nodes {
-          name
           uri
+          name
         }
       }
-      allStrapiSocialMediaLinks {
+      allContentfulSocialMediaLinks {
         nodes {
-          twitter
-          linkedin
-          instagram
           facebook
+          instagram
+          linkedin
+          twitter
         }
       }
     }
   `)
-  const { allStrapiFooterLinks, allStrapiSocialMediaLinks } = data
+  const { allContentfulMenuItem, allContentfulSocialMediaLinks } = data
   return (
     <div className="footer">
       <div className="footer-1">
@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="sec-2 footer-spacing">
           <div>
             <ul className="list-menu">
-              {allStrapiFooterLinks?.nodes.map((v, i) => (
+              {allContentfulMenuItem?.nodes.map((v, i) => (
                 <li key={i}>
                   <Link to={v.uri} activeClassName="activeLink-footer">
                     {v.name}
@@ -52,16 +52,16 @@ const Footer = () => {
         <div className="sec-3 footer-spacing">
           <div className="text-center">
             <div className="media">
-              <a href={allStrapiSocialMediaLinks.nodes[0].facebook}>
+              <a href={allContentfulSocialMediaLinks.nodes[0].facebook}>
                 <img src={Facebook} />
               </a>
-              <a href={allStrapiSocialMediaLinks.nodes[0].twitter}>
+              <a href={allContentfulSocialMediaLinks.nodes[0].twitter}>
                 <img src={Twitter} />
               </a>
-              <a href={allStrapiSocialMediaLinks.nodes[0].instagram}>
+              <a href={allContentfulSocialMediaLinks.nodes[0].instagram}>
                 <img src={Instagram} />
               </a>
-              <a href={allStrapiSocialMediaLinks.nodes[0].linkedin}>
+              <a href={allContentfulSocialMediaLinks.nodes[0].linkedin}>
                 <img src={Linkedin} />
               </a>
             </div>

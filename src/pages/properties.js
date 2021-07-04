@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 import GalleryImage from "../components/GalleryImage"
 
 const properties = ({ location, data }) => {
-  const { allStrapiPropertiesImage } = data
+  const { allContentfulPropertiesImages } = data
   return (
     <Layout location={location} title="Properties">
       <div className="container properties">
@@ -14,8 +14,8 @@ const properties = ({ location, data }) => {
         <div className="gap-spacing"></div>
 
         <div className="row align-items-center justify-content-between">
-          {allStrapiPropertiesImage.nodes[0].image.map((v, i) => (
-            <GalleryImage img={`https://texas-property-brothers.herokuapp.com${v.url}`} alt={v.name} key={i}/>
+          {allContentfulPropertiesImages.nodes[0].images.map((v, i) => (
+            <GalleryImage img={v.file.url} alt={v.file.fileName} key={i} />
           ))}
         </div>
       </div>
@@ -27,11 +27,13 @@ export default properties
 
 export const data = graphql`
   query {
-    allStrapiPropertiesImage {
+    allContentfulPropertiesImages {
       nodes {
-        image {
-          name
-          url
+        images {
+          file {
+            fileName
+            url
+          }
         }
       }
     }

@@ -11,23 +11,10 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-material-ui`,
     {
-      resolve: `gatsby-source-strapi`,
+      resolve: `gatsby-source-contentful`,
       options: {
-        apiURL: `https://texas-property-brothers.herokuapp.com`,
-        queryLimit: 1000,
-        collectionTypes: [`blogs`, `footer-links`, `services-bullet-points`],
-        singleTypes: [
-          `social-media-links`,
-          `services-image`,
-          `properties-image`,
-          `home-section-two`,
-          `home-section-one`,
-          `home-section-three`,
-          `home-section-four`,
-          `home-contact-box`,
-          `contact-us`,
-          `about-us`,
-        ],
+        spaceId: `kpp2340xmxy9`,
+        accessToken:  `BOIptvas6UBnSw6jhUAxbJXcYu86QZDpnnpoiow8mx4`,
       },
     },
     {

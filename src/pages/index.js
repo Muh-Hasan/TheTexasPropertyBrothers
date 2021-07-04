@@ -4,13 +4,12 @@ import Layout from "../components/Layout"
 
 export default function Home({ location, data }) {
   const {
-    allStrapiHomeSectionOne,
-    allStrapiHomeSectionTwo,
-    allStrapiHomeSectionThree,
-    allStrapiHomeSectionFour,
-    allStrapiHomeContactBox,
+    allContentfulHomeSectionOne,
+    allContentfulHomeSectionTwo,
+    allContentfulHomeSectionThree,
+    allContentfulHomeSectionFour,
+    allContentfulHomeContactBox,
   } = data
-  const uri = "https://texas-property-brothers.herokuapp.com"
 
   return (
     <Layout location={location} title="Home">
@@ -22,17 +21,22 @@ export default function Home({ location, data }) {
               <div className="col-sm-12 col-md-6 col-lg-6 section-div">
                 <div className="heading ">
                   <h2 className="section-one-head">
-                    <span>{allStrapiHomeSectionOne.nodes[0].title}</span>
+                    <span>{allContentfulHomeSectionOne.nodes[0].title}</span>
                   </h2>
                 </div>
                 <div>
-                  <p>{allStrapiHomeSectionOne.nodes[0].description}</p>
+                  <p>
+                    {
+                      allContentfulHomeSectionOne.nodes[0].description
+                        .description
+                    }
+                  </p>
                 </div>
               </div>
               <div className="col-sm-12 col-md-6 col-lg-6 image section-one-img sections-img">
                 <img
-                  src={`${uri}${allStrapiHomeSectionOne.nodes[0].image.url}`}
-                  alt={allStrapiHomeSectionOne.nodes[0].image.name}
+                  src={allContentfulHomeSectionOne.nodes[0].image.file.url}
+                  alt={allContentfulHomeSectionOne.nodes[0].image.file.fileName}
                 />
               </div>
             </div>
@@ -47,19 +51,24 @@ export default function Home({ location, data }) {
             <div className="row align-items-center justify-content-between d-flex section-two-div">
               <div className="col-sm-12 col-md-6 col-lg-6 image sections-img">
                 <img
-                  src={`${uri}${allStrapiHomeSectionTwo.nodes[0].image.url}`}
-                  alt={allStrapiHomeSectionTwo.nodes[0].image.name}
+                  src={allContentfulHomeSectionTwo.nodes[0].image.file.url}
+                  alt={allContentfulHomeSectionTwo.nodes[0].image.file.fileName}
                 />
               </div>
               <div className="col-sm-12 col-md-6 col-lg-6 section-div">
                 <div className="section-two-head">
                   <h2 className="section-one-head">
-                    <span>{allStrapiHomeSectionTwo.nodes[0].title}</span>
+                    <span>{allContentfulHomeSectionTwo.nodes[0].title}</span>
                   </h2>
                 </div>
                 <div className="gap-spacing"></div>
                 <div>
-                  <p>{allStrapiHomeSectionTwo.nodes[0].description}</p>
+                  <p>
+                    {
+                      allContentfulHomeSectionTwo.nodes[0].description
+                        .description
+                    }
+                  </p>
                 </div>
               </div>
             </div>
@@ -73,11 +82,13 @@ export default function Home({ location, data }) {
           <div className="gap-spacing"></div>
           <div className="container text-center">
             <div className="section-three-head">
-              <h2>{allStrapiHomeSectionThree.nodes[0].title}</h2>
+              <h2>{allContentfulHomeSectionThree.nodes[0].title}</h2>
             </div>
             <div className="gap-spacing"></div>
             <div className="section-three-para">
-              <p>{allStrapiHomeSectionThree.nodes[0].description}</p>
+              <p>
+                {allContentfulHomeSectionThree.nodes[0].description.description}
+              </p>
             </div>
             <div className="gap-spacing"></div>
             <div className="gap-spacing"></div>
@@ -92,18 +103,25 @@ export default function Home({ location, data }) {
                 <div className="section-two-head">
                   <h2 className="section-one-head">
                     <span style={{ color: "#154a40" }}>
-                      {allStrapiHomeSectionFour.nodes[0].title}
+                      {allContentfulHomeSectionFour.nodes[0].title}
                     </span>
                   </h2>
                 </div>
                 <div>
-                  <p>{allStrapiHomeSectionFour.nodes[0].description}</p>
+                  <p>
+                    {
+                      allContentfulHomeSectionFour.nodes[0].description
+                        .description
+                    }
+                  </p>
                 </div>
               </div>
               <div className="col-sm-12 col-md-6 col-lg-6 image sections-img">
                 <img
-                  src={`${uri}${allStrapiHomeSectionFour.nodes[0].image.url}`}
-                  alt={allStrapiHomeSectionFour.nodes[0].image.name}
+                  src={allContentfulHomeSectionFour.nodes[0].image.file.url}
+                  alt={
+                    allContentfulHomeSectionFour.nodes[0].image.file.fileName
+                  }
                 />
               </div>
             </div>
@@ -118,12 +136,14 @@ export default function Home({ location, data }) {
               <div className="section-two-head">
                 <h2 className="section-one-head">
                   <span style={{ color: "#154a40" }}>
-                    {allStrapiHomeContactBox.nodes[0].title}
+                    {allContentfulHomeContactBox.nodes[0].title}
                   </span>
                 </h2>
               </div>
               <div>
-                <p>{allStrapiHomeContactBox.nodes[0].description}</p>
+                <p>
+                  {allContentfulHomeContactBox.nodes[0].description.description}
+                </p>
               </div>
               <div className="section-five-btn">
                 <Link to="/contact-us">
@@ -143,46 +163,62 @@ export default function Home({ location, data }) {
 
 export const query = graphql`
   query {
-    allStrapiHomeSectionOne {
+    allContentfulHomeSectionOne {
       nodes {
         title
-        description
+        description {
+          description
+        }
         image {
-          url
-          name
+          file {
+            fileName
+            url
+          }
         }
       }
     }
-    allStrapiHomeSectionTwo {
+    allContentfulHomeSectionTwo {
       nodes {
         title
-        description
         image {
-          name
-          url
+          file {
+            fileName
+            url
+          }
+        }
+        description {
+          description
         }
       }
     }
-    allStrapiHomeSectionThree {
+    allContentfulHomeSectionThree {
       nodes {
         title
-        description
-      }
-    }
-    allStrapiHomeSectionFour {
-      nodes {
-        title
-        description
-        image {
-          url
-          name
+        description {
+          description
         }
       }
     }
-    allStrapiHomeContactBox {
+    allContentfulHomeSectionFour {
       nodes {
+        description {
+          description
+        }
         title
-        description
+        image {
+          file {
+            fileName
+            url
+          }
+        }
+      }
+    }
+    allContentfulHomeContactBox {
+      nodes {
+        description {
+          description
+        }
+        title
       }
     }
   }

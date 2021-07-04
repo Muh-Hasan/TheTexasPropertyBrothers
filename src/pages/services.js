@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import BulletPoint from "../components/BulletPoint"
 import Layout from "../components/Layout"
 const Services = ({ data, location }) => {
-  const { allStrapiServicesImage, allStrapiServicesBulletPoints } = data
+  const { allContentfulServicesImage, allContentfulServicesBulletPoints } = data
   return (
     <Layout location={location} title="Services">
       <div className="services container d-flex">
@@ -14,15 +14,15 @@ const Services = ({ data, location }) => {
             </div>
             <div className="gap-spacing"></div>
             <div>
-              {allStrapiServicesBulletPoints.nodes.map((v, i) => (
+              {allContentfulServicesBulletPoints.nodes.map((v, i) => (
                 <BulletPoint key={i} description={v.point} />
               ))}
             </div>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6 image">
             <img
-              src={`https://texas-property-brothers.herokuapp.com${allStrapiServicesImage.nodes[0].image.url}`}
-              alt={allStrapiServicesImage.nodes[0].image.name}
+              src={allContentfulServicesImage.nodes[0].image.file.url}
+              alt={allContentfulServicesImage.nodes[0].image.file.fileName}
             />
           </div>
         </div>
@@ -35,15 +35,17 @@ export default Services
 
 export const query = graphql`
   query {
-    allStrapiServicesImage {
+    allContentfulServicesImage {
       nodes {
         image {
-          name
-          url
+          file {
+            fileName
+            url
+          }
         }
       }
     }
-    allStrapiServicesBulletPoints {
+    allContentfulServicesBulletPoints {
       nodes {
         point
       }

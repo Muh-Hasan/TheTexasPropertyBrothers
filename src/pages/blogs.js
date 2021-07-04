@@ -4,17 +4,17 @@ import Layout from "../components/Layout"
 import BlogPost from "../components/BlogPost"
 
 const Blog = ({ location, data }) => {
-  const { allStrapiBlogs } = data
+  const { allContentfulBlog } = data
   return (
     <Layout location={location} title="Blogs">
-      <div className='container blogDisplay'>
+      <div className="container blogDisplay">
         <div className="row align-items-center justify-content-between">
-          {allStrapiBlogs.nodes.map((v, i) => (
+          {allContentfulBlog.nodes.map((v, i) => (
             <BlogPost
               title={v.title}
-              img={`https://texas-property-brothers.herokuapp.com${v.blogImage.url}`}
+              img={v.image.file.url}
               date={v.date}
-              alt={v.blogImage.name}
+              alt={v.image.file.fileName}
             />
           ))}
         </div>
@@ -27,15 +27,19 @@ export default Blog
 
 export const query = graphql`
   query {
-    allStrapiBlogs {
+    allContentfulBlog {
       nodes {
         title
-        date
-        blogImage {
-          url
-          name
+        description {
+          description
         }
-        description
+        image {
+          file {
+            fileName
+            url
+          }
+        }
+        date
       }
     }
   }

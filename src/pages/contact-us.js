@@ -16,7 +16,8 @@ mailchimp.setConfig({
 })
 
 const Contact = ({ location, data }) => {
-  const { allStrapiContactUs } = data
+  const { allContentfulContactUs } = data
+
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [message, setMessage] = useState("")
@@ -38,22 +39,6 @@ const Contact = ({ location, data }) => {
         ],
       },
     })
-    // const responseTwo = await mailchimp.lists.addListMember("83567a0774", {
-    //   members: [
-    //     {
-    //       email_address: email,
-    //       status: "subscribed",
-    //       merge_fields: {
-    //         PHONE: phone,
-    //       },
-    //     },
-    //   ],
-    // })
-
-    // console.log(
-    //   `Successfully added contact as an audience member. The contact's id is ${responseTwo.id}.`
-    // )
-    // console.log(responseOne)
   }
 
   return (
@@ -73,18 +58,18 @@ const Contact = ({ location, data }) => {
             <div>
               <div className="gap-contact"></div>
               <ContactInfo
-                description={allStrapiContactUs.nodes[0].email}
+                description={allContentfulContactUs.nodes[0].email}
                 title="Email"
                 img={Envelope}
               />
               <ContactInfo
-                description={allStrapiContactUs.nodes[0].phone}
+                description={allContentfulContactUs.nodes[0].phone}
                 title="Phone"
                 img={Phone}
               />
               <ContactInfo
                 title="Address"
-                description={allStrapiContactUs.nodes[0].address}
+                description={allContentfulContactUs.nodes[0].address}
                 img={Mark}
               />
             </div>
@@ -126,7 +111,7 @@ export default Contact
 
 export const query = graphql`
   query {
-    allStrapiContactUs {
+    allContentfulContactUs {
       nodes {
         email
         address

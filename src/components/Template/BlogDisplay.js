@@ -15,13 +15,10 @@ const BlogDisplay = ({ location, pageContext: { data } }) => {
             </p>
           </div>
           <div className="image">
-            <img
-              src={`http://localhost:1337${data.blogImage.url}`}
-              alt={data.blogImage.name}
-            />
+            <img src={data.image.file.url} alt={data.image.file.fileName} />
           </div>
           <div className="blog-description">
-            <p>{data.description}</p>
+            <p>{data.description.description}</p>
           </div>
         </div>
       </div>

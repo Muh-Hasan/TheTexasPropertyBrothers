@@ -44,15 +44,15 @@ const Header = props => {
   const isSize = useBreakpoint()
   const data = useStaticQuery(graphql`
     query {
-      allStrapiFooterLinks {
+      allContentfulMenuItem {
         nodes {
-          name
           uri
+          name
         }
       }
     }
   `)
-  const { allStrapiFooterLinks } = data
+  const { allContentfulMenuItem } = data
 
   const [state, setState] = React.useState({ right: false })
 
@@ -77,7 +77,7 @@ const Header = props => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {allStrapiFooterLinks.nodes.map((v, index) => (
+        {allContentfulMenuItem.nodes.map((v, index) => (
           <>
             <ListItem button key={index}>
               <Link to={v.uri}>
@@ -127,7 +127,7 @@ const Header = props => {
               </div>
             ) : (
               <>
-                {allStrapiFooterLinks?.nodes.map((v, i) => (
+                {allContentfulMenuItem?.nodes.map((v, i) => (
                   <MenuItem name={v.name} uri={v.uri} key={i} />
                 ))}
               </>

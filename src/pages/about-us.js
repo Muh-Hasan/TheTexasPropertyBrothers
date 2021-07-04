@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 
 const About = ({ location, data }) => {
-  const { allStrapiAboutUs } = data
+  const { allContentfulAboutUs } = data
   return (
     <Layout location={location} title="About Us">
       <div className="container about">
@@ -15,14 +15,16 @@ const About = ({ location, data }) => {
             <div className="gap-spacing"></div>
             <div>
               <p className="description">
-                <span>{allStrapiAboutUs.nodes[0].description}</span>
+                <span>
+                  {allContentfulAboutUs.nodes[0].description.description}
+                </span>
               </p>
             </div>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6 image">
             <img
-              src={`https://texas-property-brothers.herokuapp.com${allStrapiAboutUs.nodes[0].img.url}`}
-              alt={allStrapiAboutUs.nodes[0].img.name}
+              src={allContentfulAboutUs.nodes[0].image.file.url}
+              alt={allContentfulAboutUs.nodes[0].image.file.fileName}
             />
           </div>
         </div>
@@ -35,12 +37,16 @@ export default About
 
 export const query = graphql`
   query {
-    allStrapiAboutUs {
+    allContentfulAboutUs {
       nodes {
-        description
-        img {
-          name
-          url
+        image {
+          file {
+            fileName
+            url
+          }
+        }
+        description {
+          description
         }
       }
     }

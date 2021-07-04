@@ -3,20 +3,24 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     {
-      allStrapiBlogs {
+      allContentfulBlog {
         nodes {
           title
-          date
-          blogImage {
-            url
-            name
+          description {
+            description
           }
-          description
+          image {
+            file {
+              fileName
+              url
+            }
+          }
+          date
         }
       }
     }
   `)
-  result.data.allStrapiBlogs.nodes.forEach(item => {
+  result.data.allContentfulBlog.nodes.forEach(item => {
     createPage({
       path: `/blogs/${item.title}`,
       component: path.resolve("./src/components/Template/BlogDisplay.js"),
